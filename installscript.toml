@@ -20,6 +20,12 @@ library.zig-string = { license = [
 library.ziter = { license = [
     { name = 'MIT', url = 'https://github.com/Hejsil/ziter/blob/master/LICENSE' },
 ], version = 'a1e61cb8d4f2a7ff882362ccb9108fe61d5e0c6f' }
+library.mvzr = { license = [
+    { name = 'MIT', url = 'https://github.com/mnemnion/mvzr/blob/trunk/LICENSE' },
+], version = 'v0.3.4' }
+library.zig-regex = { license = [
+    { name = 'MIT', url = 'https://github.com/tiehuis/zig-regex/blob/master/LICENSE' },
+], version = '88105ccfb6d679111b91d798d97cd4eb95617452' }
 
 filename = 'src/main.zig'
 
@@ -45,6 +51,10 @@ zig fetch --save=proconio git+https://github.com/Ryoga-exe/proconio-zig#v0.1.0
 zig fetch --save=string git+https://github.com/JakubSzark/zig-string#f6f9e5dc7c5c45a72473de245a0e6958ef2bf913
 
 zig fetch --save=ziter git+https://github.com/Hejsil/ziter#8fc06df472ca99d902619807ad08034bc1bbe08e
+
+zig fetch --save=mvzr git+https://github.com/mnemnion/mvzr#v0.3.4
+
+zig fetch --save=regex git+https://github.com/tiehuis/zig-regex#88105ccfb6d679111b91d798d97cd4eb95617452
 
 cat << EOF > build.zig
 const std = @import("std");
@@ -87,6 +97,18 @@ pub fn build(b: *std.Build) void {
         .optimize = optimize,
     });
     exe_mod.addImport("ziter", ziter.module("ziter"));
+
+    const mvzr = b.dependency("mvzr", .{
+        .target = target,
+        .optimize = optimize,
+    });
+    exe_mod.addImport("mvzr", mvzr.module("mvzr"));
+
+    const regex = b.dependency("regex", .{
+        .target = target,
+        .optimize = optimize,
+    });
+    exe_mod.addImport("regex", regex.module("regex"));
 }
 EOF
 

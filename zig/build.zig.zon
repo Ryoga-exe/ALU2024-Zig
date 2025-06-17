@@ -52,6 +52,14 @@
             .url = "git+https://github.com/Hejsil/ziter#8fc06df472ca99d902619807ad08034bc1bbe08e",
             .hash = "N-V-__8AADcuAQAtKpawWHcET-tAMcsOuhkqzot7ikAPMeS-",
         },
+        .mvzr = .{
+            .url = "git+https://github.com/mnemnion/mvzr?ref=v0.3.4#f95d3c336bc42f6d12d990685b11bd8c1e6e82a4",
+            .hash = "mvzr-0.3.4-ZSOky2RnAQDtFSuVhbh2fP1s4PwRvTQ-DDw2lixvvA7T",
+        },
+        .regex = .{
+            .url = "git+https://github.com/tiehuis/zig-regex#88105ccfb6d679111b91d798d97cd4eb95617452",
+            .hash = "regex-0.1.2-axC356XdAQCrReHJQmJLbCDBoYVvzj8y-wE1PXUjT4V6",
+        },
     },
     .paths = .{
         "build.zig",

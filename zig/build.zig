@@ -38,4 +38,16 @@ pub fn build(b: *std.Build) void {
         .optimize = optimize,
     });
     exe_mod.addImport("ziter", ziter.module("ziter"));
+
+    const mvzr = b.dependency("mvzr", .{
+        .target = target,
+        .optimize = optimize,
+    });
+    exe_mod.addImport("mvzr", mvzr.module("mvzr"));
+
+    const regex = b.dependency("regex", .{
+        .target = target,
+        .optimize = optimize,
+    });
+    exe_mod.addImport("regex", regex.module("regex"));
 }

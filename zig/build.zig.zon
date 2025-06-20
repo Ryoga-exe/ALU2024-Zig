@@ -41,8 +41,8 @@
             .hash = "ac_library-0.2.0-3En7NbzFAQCEoO6ozvsNRxv4bX23jNdfbKiIHCj2043A",
         },
         .proconio = .{
-            .url = "git+https://github.com/Ryoga-exe/proconio-zig?ref=v0.1.0#bdbef0da0654eb060660a39e9d625103908aff7b",
-            .hash = "proconio-0.1.0--aR2qwErAAC-sEaUFM3MEY-5VtOP2TtQgBmch6RsVcFr",
+            .url = "git+https://github.com/Ryoga-exe/proconio-zig?ref=v0.2.0#2847f8fce924eac0b443583756df5c62772d9891",
+            .hash = "proconio-0.2.0--aR2q601AAD9ZOmFxCt2zmlLywxPT9UZAus-ABzj8A-c",
         },
         .string = .{
             .url = "git+https://github.com/JakubSzark/zig-string#f6f9e5dc7c5c45a72473de245a0e6958ef2bf913",

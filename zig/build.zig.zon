@@ -37,8 +37,8 @@
     // internet connectivity.
     .dependencies = .{
         .@"ac-library" = .{
-            .url = "git+https://github.com/Ryoga-exe/ac-library-zig?ref=v0.2.0#d8c26b0a372e8c712d1ed90c64e96d3224d26ec4",
-            .hash = "ac_library-0.2.0-3En7NbzFAQCEoO6ozvsNRxv4bX23jNdfbKiIHCj2043A",
+            .url = "git+https://github.com/Ryoga-exe/ac-library-zig?ref=v0.3.0#92d1b4f5bf70df0147aa599a959d97caee97e11d",
+            .hash = "ac_library-0.3.0-3En7NTkXAgCNmQAq-ddGdIi28jmCUnca4upEUK1ly9Zv",
         },
         .proconio = .{
             .url = "git+https://github.com/Ryoga-exe/proconio-zig?ref=v0.2.0#2847f8fce924eac0b443583756df5c62772d9891",

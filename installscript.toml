@@ -7,7 +7,7 @@ license = [
 
 library.ac-library-zig = { license = [
     { name = 'CC0-1.0', url = 'https://github.com/Ryoga-exe/ac-library-zig/blob/main/LICENSE' },
-], version = 'v0.2.0' }
+], version = 'v0.3.0' }
 library.proconio-zig = { license = [
     { name = 'MIT', url = 'https://github.com/Ryoga-exe/proconio-zig/blob/main/LICENSE' },
 ], version = 'v0.2.0' }
@@ -44,7 +44,7 @@ zig init
 rm src/root.zig
 
 # Install Libraries
-zig fetch --save=ac-library git+https://github.com/Ryoga-exe/ac-library-zig#v0.2.0
+zig fetch --save=ac-library git+https://github.com/Ryoga-exe/ac-library-zig#v0.3.0
 
 zig fetch --save=proconio git+https://github.com/Ryoga-exe/proconio-zig#v0.2.0
 

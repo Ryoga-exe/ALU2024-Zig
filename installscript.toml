@@ -7,30 +7,15 @@ license = [
 
 library.ac-library-zig = { license = [
     { name = 'CC0-1.0', url = 'https://github.com/Ryoga-exe/ac-library-zig/blob/main/LICENSE' },
-], version = 'v0.3.0' }
+], version = 'v0.4.0' }
 library.proconio-zig = { license = [
     { name = 'MIT', url = 'https://github.com/Ryoga-exe/proconio-zig/blob/main/LICENSE' },
-], version = 'v0.2.0' }
-library.algorithms = { license = [
-    { name = 'MIT', url = 'https://github.com/TheAlgorithms/Zig/blob/main/LICENSE' },
-], version = '5b9cf67' }
-library.zig-string = { license = [
-    { name = 'MIT', url = 'https://github.com/JakubSzark/zig-string/blob/master/LICENSE' },
-], version = 'f6f9e5dc7c5c45a72473de245a0e6958ef2bf913' }
-library.ziter = { license = [
-    { name = 'MIT', url = 'https://github.com/Hejsil/ziter/blob/master/LICENSE' },
-], version = 'a1e61cb8d4f2a7ff882362ccb9108fe61d5e0c6f' }
-library.mvzr = { license = [
-    { name = 'MIT', url = 'https://github.com/mnemnion/mvzr/blob/trunk/LICENSE' },
-], version = 'v0.3.4' }
-library.zig-regex = { license = [
-    { name = 'MIT', url = 'https://github.com/tiehuis/zig-regex/blob/master/LICENSE' },
-], version = '88105ccfb6d679111b91d798d97cd4eb95617452' }
+], version = 'v0.3.0' }
 
 filename = 'src/main.zig'
 
 install = '''
-AC_ZIG_VERSION=0.14.1
+AC_ZIG_VERSION=0.15.1
 sudo apt-get update
 sudo apt-get install -y --no-install-recommends git
 pushd /tmp
@@ -44,17 +29,9 @@ zig init
 rm src/root.zig
 
 # Install Libraries
-zig fetch --save=ac-library git+https://github.com/Ryoga-exe/ac-library-zig#v0.3.0
+zig fetch --save=ac-library git+https://github.com/Ryoga-exe/ac-library-zig#v0.4.0
 
-zig fetch --save=proconio git+https://github.com/Ryoga-exe/proconio-zig#v0.2.0
-
-zig fetch --save=string git+https://github.com/JakubSzark/zig-string#f6f9e5dc7c5c45a72473de245a0e6958ef2bf913
-
-zig fetch --save=ziter git+https://github.com/Hejsil/ziter#8fc06df472ca99d902619807ad08034bc1bbe08e
-
-zig fetch --save=mvzr git+https://github.com/mnemnion/mvzr#v0.3.4
-
-zig fetch --save=regex git+https://github.com/tiehuis/zig-regex#88105ccfb6d679111b91d798d97cd4eb95617452
+zig fetch --save=proconio git+https://github.com/Ryoga-exe/proconio-zig#v0.3.0
 
 cat << EOF > build.zig
 const std = @import("std");
@@ -85,47 +62,14 @@ pub fn build(b: *std.Build) void {
         .optimize = optimize,
     });
     exe_mod.addImport("proconio", proconio.module("proconio"));
-
-    const string = b.dependency("string", .{
-        .target = target,
-        .optimize = optimize,
-    });
-    exe_mod.addImport("string", string.module("string"));
-
-    const ziter = b.dependency("ziter", .{
-        .target = target,
-        .optimize = optimize,
-    });
-    exe_mod.addImport("ziter", ziter.module("ziter"));
-
-    const mvzr = b.dependency("mvzr", .{
-        .target = target,
-        .optimize = optimize,
-    });
-    exe_mod.addImport("mvzr", mvzr.module("mvzr"));
-
-    const regex = b.dependency("regex", .{
-        .target = target,
-        .optimize = optimize,
-    });
-    exe_mod.addImport("regex", regex.module("regex"));
 }
 EOF
-
-mkdir src/algorithms
-wget -q -O /tmp/algorithms.tar.gz https://github.com/TheAlgorithms/Zig/archive/5b9cf67.tar.gz
-tar -C src/algorithms --strip-components=1 -xf /tmp/algorithms.tar.gz --wildcards '*/dataStructures' '*/dynamicProgramming' '*/math' '*/search' '*/sort'
 
 cat << 'EOF' > src/main.zig
 const std = @import("std");
 const ac = @import("ac-library");
-const iter = @import("ziter");
 
 pub fn main() !void {
-    const ascii_digits = try iter.range(u8, 0, 255)
-        .filter({}, iter.void_ctx(std.ascii.isDigit))
-        .collect_no_allocator(std.BoundedArray(u8, 255){});
-    std.debug.print("{any}\n", .{ascii_digits.slice()});
     const allocator = std.heap.page_allocator;
     var d = try ac.Dsu.init(allocator, 10);
     defer d.deinit();
